@@ -25,4 +25,4 @@ gulp.task('watch', function(){ //задача, с помощью которой 
     gulp.watch("src/*.html").on("change", browserSync.reload); //на сохранении html-файла браузер обновляется, как я понял.
 });
 
-gulp.task('default', gupl.parallel('watch', 'server', 'styles')); //задача, которая объединяет функционал двух подзадач  выше и будет выполняться по-дефолту.
+gulp.task('default', gulp.parallel('watch', 'server', 'styles')); //задача, которая объединяет функционал двух подзадач  выше и будет выполняться по-дефолту.
