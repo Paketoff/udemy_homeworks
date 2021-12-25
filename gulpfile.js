@@ -15,11 +15,11 @@ gulp.task('server', function() { //работает по типу live-server
 });
 
 gulp.task('styles', function(){ //работает когда файл компилиться
-    return gulp.src("src/sass/*.+(scss|sass)") //возможно тут будет ошибка из-за того, что не указал папку base.
+    return gulp.src("src/sass/**/*.+(scss|sass)") //возможно тут будет ошибка из-за того, что не указал папку base.
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError)) //style.sass -> style.css
     .pipe(rename({
-        prefix: "",
-        suffix: ".min" //style.css -> style.min.css
+        suffix: '.min',
+        prefix: '' //style.css -> style.min.css
     }))
     .pipe(autoprefixer({ //работа autoprefixer
         cascade: false
@@ -31,7 +31,7 @@ gulp.task('styles', function(){ //работает когда файл комп�
 
 
 gulp.task('watch', function(){ //задача, с помощью которой gulp следит за файлами. нужно для всего остального.
-    gulp.watch("src/sass/*.+(scss|sass)", gulp.parallel("styles")); //когда задача полностью выполниться, (как я понимаю сохраниться sass-файл) браузер обновиться.
+    gulp.watch("src/sass/**/*.+(scss|sass)", gulp.parallel("styles")); //когда задача полностью выполниться, (как я понимаю сохраниться sass-файл) браузер обновиться.
     gulp.watch("src/*.html").on("change", browserSync.reload); //на сохранении html-файла браузер обновляется, как я понял.
 });
 
