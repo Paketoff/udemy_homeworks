@@ -1,0 +1,15 @@
+@media (min-width: 767px) {
+    .header{
+        margin-right: 30px;
+        margin-left: 30px;
+        &__logo{ //ПОЧЕМУ ОНО НЕ РАБОТАЕТ БЛЯТЬ?
+            width: 200px;
+        }
+    }
+
+    .promo_wrapper {
+        &__header {
+            
+        }
+    }
+}
