@@ -1,15 +1,20 @@
-@media (min-width: 767px) {
+@media all and (min-width: 767px) {
     .header{
         margin-right: 30px;
         margin-left: 30px;
-        &__logo{ //ПОЧЕМУ ОНО НЕ РАБОТАЕТ БЛЯТЬ?
-            width: 200px;
-        }
     }
 
-    .promo_wrapper {
-        &__header {
-            
-        }
-    }
+   .promo__wrapper{
+    align-items: center;
+   }
+
+    // .benefits{
+    //     &__items{
+    //         flex-direction: column;
+    //         align-items: center;
+    //     }
+    //     &__text{
+    //         margin-bottom: 30px;
+    //     }
+    // }
 }
