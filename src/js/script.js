@@ -30,8 +30,24 @@ $(document).ready(function () {
 			$('.catalog-item__list').eq(i).toggleClass('catalog-item__list_active');
 		}) //ссылаемся на каждый элемент который перебираеться (на каждую ссылку)
 	})
+	//Modal
+	$('[data-modal=mod_consultation]').on('click', function(){
+			$('.overlay, #mod_consultation').fadeIn('slow');
+	});
+	$('.modal__close').on('click', function(){
+		$('.overlay, #mod_consultation, #mod_thanks, #mod_order').fadeOut('slow');
+	});
+	//где-то тут ошибка
+	$('.button_mini').each(function(i){
+		$(this).on('click', function(){
+			$('#mod_order .modal__descr').text($('.catalog-item__subtitle').eq(i).text()); //text() - getter, 
+			//text('example') - setter.
+			$('.overlay, #mod_order').fadeIn('slow');
+		});
+	});
 });
 
 //document - html документ (наш)
 //$ - библиотека jQuery
 //slick() - метод, вызывающий слик-слайдер
+
