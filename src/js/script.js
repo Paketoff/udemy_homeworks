@@ -37,7 +37,6 @@ $(document).ready(function () {
 	$('.modal__close').on('click', function(){
 		$('.overlay, #mod_consultation, #mod_thanks, #mod_order').fadeOut('slow');
 	});
-	//где-то тут ошибка
 	$('.button_mini').each(function(i){
 		$(this).on('click', function(){
 			$('#mod_order .modal__descr').text($('.catalog-item__subtitle').eq(i).text()); //text() - getter, 
@@ -45,6 +44,26 @@ $(document).ready(function () {
 			$('.overlay, #mod_order').fadeIn('slow');
 		});
 	});
+	$('#consultation_form').validate();
+	$('#mod_consultation form').validate({
+		rules: {
+			name: "required",
+			phone: "required",
+			email: {
+				required: true,
+				email: true
+				}
+			},
+			messages: {
+					name: "Пожалуйста, введите своё имя",
+					phone: "Пожалуйста, введите свой телефон",
+					email: {
+					required: "Пожалуйста, введите свою почту",
+					email: "Ваш e-mail адрес должен быть в виде name@domain.com"
+    	}
+		}
+	});
+	$('#mod_order form').validate();
 });
 
 //document - html документ (наш)
