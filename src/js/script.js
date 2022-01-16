@@ -28,8 +28,8 @@ $(document).ready(function () {
 			e.preventDefault(); //при клике на ссылку мы говорим чтобы браузер не переходил по адрессу этой ссылки
 			$('.catalog-item__content').eq(i).toggleClass('catalog-item__content_active'); //toggleClass - если класса нет, он добавляеться, если есть - переключаеться на тот что слева от этой ф-ции.
 			$('.catalog-item__list').eq(i).toggleClass('catalog-item__list_active');
-		}) //ссылаемся на каждый элемент который перебираеться (на каждую ссылку)
-	})
+		}); //ссылаемся на каждый элемент который перебираеться (на каждую ссылку)
+	});
 	//Modal
 	$('[data-modal=mod_consultation]').on('click', function(){
 			$('.overlay, #mod_consultation').fadeIn('slow');
@@ -44,7 +44,24 @@ $(document).ready(function () {
 			$('.overlay, #mod_order').fadeIn('slow');
 		});
 	});
-	$('#consultation_form').validate();
+	$('#consultation_form').validate({
+		rules: {
+			name: "required",
+			phone: "required",
+			email: {
+				required: true,
+				email: true
+				}
+			},
+			messages: {
+					name: "Пожалуйста, введите своё имя",
+					phone: "Пожалуйста, введите свой телефон",
+					email: {
+					required: "Пожалуйста, введите свою почту",
+					email: "Ваш e-mail адрес должен быть в виде name@domain.com"
+    	}
+		}
+	});
 	$('#mod_consultation form').validate({
 		rules: {
 			name: "required",
@@ -63,7 +80,50 @@ $(document).ready(function () {
     	}
 		}
 	});
-	$('#mod_order form').validate();
+	$('#mod_order form').validate({
+		rules: {
+			name: "required",
+			phone: "required",
+			email: {
+				required: true,
+				email: true
+				}
+			},
+			messages: {
+					name: "Пожалуйста, введите своё имя",
+					phone: "Пожалуйста, введите свой телефон",
+					email: {
+					required: "Пожалуйста, введите свою почту",
+					email: "Ваш e-mail адрес должен быть в виде name@domain.com"
+    	}
+		}
+	});
+
+	//scroll for pageUp
+	$(window).scroll(function() {
+		if($(this).scrollTop() > 1600) {
+			$('.pageUp').fadeIn();
+		} else{
+			$('.pageUp').fadeOut();
+		}
+		if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+	});
 });
 
 //document - html документ (наш)
