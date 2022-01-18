@@ -6,14 +6,24 @@ $(document).ready(function () {
 		// adaptiveHeight: true,
 		prevArrow: '<button type="button" class="slick-prev"><img src="../img/leftArrow.png"></button>',
 		nextArrow: '<button type="button" class="slick-next"><img src="../img/rightArrow.png"></button>',
-		responsive: [{
+		responsive: [
+			{
 				breakpoint: 992, //брейкпоинт пикселей (0-1024)
 				settings: {
+					slidesToShow: 1,
+					infinite: true,
 					dots: true,
 					arrows: false
 				}
 			},
-
+			{
+				breakpoint: 752, 
+				settings: {
+					slidesToShow: 1,
+					dots: true,
+					arrows: false
+				}
+			},
 		]
 	});
 	//табы
